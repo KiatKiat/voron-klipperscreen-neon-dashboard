@@ -1,18 +1,19 @@
 # Neon Voron for HelixScreen
 
-A HelixScreen-native adaptation of the Voron neon dashboard concept for **800x480 HDMI landscape**.
+A HelixScreen-native theme and Home Panel layout adaptation of the Voron neon dashboard concept, intended for **800×480 HDMI landscape**.
 
-## What this port includes
+## Included
 
-- A native HelixScreen theme JSON with a near-black navy base, cyan primary accent, purple secondary accent, mint-green tertiary/success accent, and high-contrast text.
-- A 6x4 Home Panel layout profile for 800x480.
-- A setup guide for adding the theme and arranging the native widgets.
+- `neon-voron.json`: valid HelixScreen theme structure with 16 semantic color tokens in both dark and light palettes, plus global border and shadow settings.
+- `home-layout.json`: Home Panel widget arrangement for HelixScreen's 6×4 small-screen grid. Widget positions and spans use half-cell tracks as required by the settings format.
 
-## Important: native HelixScreen limits
+## What this port can and cannot reproduce
 
-This is a theme + widget-layout port, not a replacement of HelixScreen's application UI. HelixScreen themes expose 16 semantic color tokens and global border/shadow styling. They do **not** currently let a theme draw the mockup's custom Voron header, custom left-side navigation, per-card orange/cyan/purple outlines, circular percentage gauge, or bespoke Pause/Resume/Stop footer. The app's native Print Status and control panels provide the corresponding printer functions, but their exact appearance differs from the concept image.
+This is a native theme + widget-layout port, not a custom replacement application UI. The theme changes semantic colors, global borders, corner radius and shadows. The Home Panel layout arranges native HelixScreen widgets.
 
-The theme does not add hardware telemetry. Chamber temperature, LED, and other hardware-gated widgets appear only when the corresponding sensors/devices are configured and detected.
+The reference mockup's bespoke Voron header, fixed left navigation, individually colored nozzle/bed/chamber cards, circular progress gauge, and dedicated Pause/Resume/Stop footer are not created by a theme or Home Panel layout alone. Those require custom UI development in HelixScreen. Native Print Status, Temperature, Fan, and other panels remain the functional controls.
+
+Hardware-dependent widgets only appear when the corresponding sensor or device is configured and detected. Chamber temperature, LED, MCU and CPU telemetry are not fabricated by this theme.
 
 ## Install the theme
 
@@ -23,32 +24,28 @@ mkdir -p ~/helixscreen/config/themes
 cp neon-voron.json ~/helixscreen/config/themes/neon-voron.json
 ```
 
-Restart HelixScreen, then select:
+Restart HelixScreen, then choose **Settings → Appearance → Theme Colors → Neon Voron**.
 
-**Settings → Appearance → Theme Colors → Neon Voron**
+User themes are discovered from `~/helixscreen/config/themes/` at launch.
 
-The user theme directory is `~/helixscreen/config/themes/`; user themes are discovered at launch and take precedence over built-in themes.
+## Apply the Home Panel layout
 
-## Set the 800x480 layout
+Back up your existing settings first:
 
-HelixScreen auto-detects 800x480 as the standard small landscape layout (6 columns x 4 rows). Leave layout on `auto` unless you have a reason to override it.
+```bash
+cp ~/helixscreen/config/settings.json ~/helixscreen/config/settings.json.bak
+```
 
-The file `home-layout.json` contains a `panel_widgets.home` fragment. Merge that object into your existing `~/helixscreen/config/settings.json`; do not replace the entire settings file. Back up settings.json first. The layout is a starting point and can be refined with Home Panel Edit Mode.
+Merge the `panel_widgets` object from `home-layout.json` into `~/helixscreen/config/settings.json`. Do not replace the whole settings file. If you already have a customized Home Panel, merge carefully or use Home Panel Edit Mode instead.
 
-## Hardware mapping notes
+At 800×480, HelixScreen uses a 6-column × 4-row grid. In the settings JSON, positions and spans are expressed in half-cell tracks, so the grid bounds are 12×8.
 
-- `temperature`: nozzle temperature.
-- `temp_stack`: nozzle / bed / chamber temperatures where available.
-- `fan_stack`: part / hotend / auxiliary fans exposed by Klipper.
-- `temp_graph`: temperature history.
-- `network`: network state.
-- `led`: LED quick control, only when a supported LED device is detected.
-- `notifications`: pending alerts.
+## Tune the layout on screen
 
-If chamber temperature or LED widgets are absent, configure the corresponding sensor or LED in Klipper/Moonraker and HelixScreen Hardware & Devices settings.
+Long-press the Home Panel to enter Edit Mode. Move and resize widgets to suit your actual sensor names and installed hardware. Temperature and fan widgets can be configured to display the available devices.
 
-## Source documentation
+## References
 
-- https://helixscreen.org/dev/contributing/themes/
-- https://helixscreen.org/reference/configuration/
-- https://helixscreen.org/guide/home-panel/
+- Home Panel guide: https://helixscreen.org/guide/home-panel/
+- Theme contributor guide: https://github.com/prestonbrown/helixscreen/blob/main/docs/devel/THEME_CONTRIBUTOR_GUIDE.md
+- Configuration reference: https://helixscreen.org/reference/configuration/
