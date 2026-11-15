@@ -10,72 +10,64 @@
               "enabled": true,
               "col": 0,
               "row": 0,
-              "colspan": 2,
-              "rowspan": 2
+              "colspan": 4,
+              "rowspan": 4
             },
             {
               "id": "print_status",
               "enabled": true,
-              "col": 2,
+              "col": 4,
               "row": 0,
-              "colspan": 2,
-              "rowspan": 2
+              "colspan": 4,
+              "rowspan": 4
             },
             {
               "id": "temperature",
               "enabled": true,
-              "col": 4,
+              "col": 8,
               "row": 0,
-              "colspan": 2,
-              "rowspan": 1
-            },
-            {
-              "id": "temp_stack",
-              "enabled": true,
-              "col": 4,
-              "row": 1,
-              "colspan": 2,
-              "rowspan": 1
+              "colspan": 4,
+              "rowspan": 2
             },
             {
               "id": "fan_stack",
               "enabled": true,
               "col": 0,
-              "row": 2,
-              "colspan": 2,
-              "rowspan": 1
+              "row": 4,
+              "colspan": 4,
+              "rowspan": 2
             },
             {
               "id": "temp_graph",
               "enabled": true,
-              "col": 2,
+              "col": 4,
+              "row": 4,
+              "colspan": 4,
+              "rowspan": 4
+            },
+            {
+              "id": "network",
+              "enabled": true,
+              "col": 8,
               "row": 2,
               "colspan": 2,
               "rowspan": 2
             },
             {
-              "id": "network",
-              "enabled": true,
-              "col": 4,
-              "row": 2,
-              "colspan": 1,
-              "rowspan": 1
-            },
-            {
-              "id": "led",
-              "enabled": true,
-              "col": 5,
-              "row": 2,
-              "colspan": 1,
-              "rowspan": 1
-            },
-            {
               "id": "notifications",
               "enabled": true,
-              "col": 4,
-              "row": 3,
+              "col": 10,
+              "row": 2,
               "colspan": 2,
-              "rowspan": 1
+              "rowspan": 2
+            },
+            {
+              "id": "digital_clock",
+              "enabled": true,
+              "col": 8,
+              "row": 4,
+              "colspan": 4,
+              "rowspan": 2
             }
           ]
         }
