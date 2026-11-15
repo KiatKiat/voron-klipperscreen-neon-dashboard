@@ -39,7 +39,7 @@
   "border_radius_size": 5,
   "border_width": 2,
   "border_opacity": 110,
-  "shadow_intensity": 8,
-  "shadow_opa": 35,
-  "shadow_offset_y": 1
+  "shadow_intensity": 4,
+  "shadow_opa": 45,
+  "shadow_offset_y": 2
 }
