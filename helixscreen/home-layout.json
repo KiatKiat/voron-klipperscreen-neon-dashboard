@@ -1,0 +1,87 @@
+{
+  "panel_widgets": {
+    "home": {
+      "pages": [
+        {
+          "id": "main",
+          "widgets": [
+            {
+              "id": "printer_image",
+              "enabled": true,
+              "col": 0,
+              "row": 0,
+              "colspan": 2,
+              "rowspan": 2
+            },
+            {
+              "id": "print_status",
+              "enabled": true,
+              "col": 2,
+              "row": 0,
+              "colspan": 2,
+              "rowspan": 2
+            },
+            {
+              "id": "temperature",
+              "enabled": true,
+              "col": 4,
+              "row": 0,
+              "colspan": 2,
+              "rowspan": 1
+            },
+            {
+              "id": "temp_stack",
+              "enabled": true,
+              "col": 4,
+              "row": 1,
+              "colspan": 2,
+              "rowspan": 1
+            },
+            {
+              "id": "fan_stack",
+              "enabled": true,
+              "col": 0,
+              "row": 2,
+              "colspan": 2,
+              "rowspan": 1
+            },
+            {
+              "id": "temp_graph",
+              "enabled": true,
+              "col": 2,
+              "row": 2,
+              "colspan": 2,
+              "rowspan": 2
+            },
+            {
+              "id": "network",
+              "enabled": true,
+              "col": 4,
+              "row": 2,
+              "colspan": 1,
+              "rowspan": 1
+            },
+            {
+              "id": "led",
+              "enabled": true,
+              "col": 5,
+              "row": 2,
+              "colspan": 1,
+              "rowspan": 1
+            },
+            {
+              "id": "notifications",
+              "enabled": true,
+              "col": 4,
+              "row": 3,
+              "colspan": 2,
+              "rowspan": 1
+            }
+          ]
+        }
+      ],
+      "main_page_index": 0,
+      "next_page_id": 1
+    }
+  }
+}
