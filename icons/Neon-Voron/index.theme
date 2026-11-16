@@ -1,0 +1,12 @@
+[Icon Theme]
+Name=Neon-Voron
+Comment=Custom neon symbolic icons for KlipperScreen
+Inherits=Adwaita,hicolor
+Directories=scalable/actions
+
+[scalable/actions]
+Size=24
+Context=Actions
+Type=Scalable
+MinSize=16
+MaxSize=64
