@@ -7,8 +7,9 @@ A touch-friendly neon dashboard concept for KlipperScreen, designed around a Vor
 ## Features
 
 - Dark navy interface with cyan / blue neon styling
-- Consistent symbolic GTK icons for navigation, temperature cards, telemetry and print actions
-- Semantic icon accents: amber nozzle, cyan bed/fans, purple chamber, green system health, magenta flow
+- Dedicated **Neon-Voron GTK icon theme** with hand-authored SVG symbolic icons (not just CSS tinting of the system's existing glyphs)
+- Custom vector icon coverage for home, files, print, pause, stop, temperature, heated bed, fan, mesh, movement, settings, console, network and status
+- Semantic neon accents: amber heater, cyan bed/fans, purple chamber, green system health, magenta flow
 - Print filename, progress percentage, layer information and elapsed time
 - Nozzle, bed and chamber temperature cards
 - Fan, speed, flow and filament-use indicators
@@ -27,60 +28,52 @@ Some fields depend on your printer configuration. Chamber and MCU temperatures r
 
 ## 800×480 layout and icon system
 
-The dashboard uses a compact 800×480 landscape layout, GTK symbolic icons (no emoji dependency), and semantic neon accents. The custom Home dashboard is updated; other KlipperScreen pages retain their native controls and receive the shared GTK icon styling from the appended theme.
+The custom GTK icon theme is installed as Neon-Voron under ~/.local/share/icons and selected in the current user's GTK3 settings. It overrides common symbolic icon names used by KlipperScreen, so native pages can display the new SVG artwork rather than relying only on a cyan CSS tint. GTK icons not included in the theme fall back to Adwaita.
 
-See [the implementation specification](docs/800x480-implementation-spec.md) for page inventory, sizing, icon mapping and verification requirements.
+See the implementation specification in docs/800x480-implementation-spec.md for page inventory, sizing, icon mapping and verification requirements.
 
 ## Install
 
-1. Copy this repository to your printer or download it as a ZIP.
-2. Extract it.
-3. Run the installer with the path to your KlipperScreen source directory:
-
-```bash
+~~~bash
 cd ~
-git clone --branch neon-all-pages-refresh https://github.com/KiatKiat/voron-klipperscreen-neon-dashboard.git
+git clone --branch neon-icons-full-refresh https://github.com/KiatKiat/voron-klipperscreen-neon-dashboard.git
 cd voron-klipperscreen-neon-dashboard
 bash install.sh ~/KlipperScreen
 sudo systemctl restart KlipperScreen
-```
+~~~
 
-If the repository is already cloned, update it first:
+The installer backs up the existing KlipperScreen main menu and base CSS, installs the dashboard and neon stylesheet, then installs the custom SVG icon theme and selects it in the current user's GTK3 settings.
 
-```bash
+If the repository is already cloned:
+
+~~~bash
 cd ~/voron-klipperscreen-neon-dashboard
 git fetch origin
-git checkout neon-all-pages-refresh
+git checkout neon-icons-full-refresh
 git pull --ff-only
 bash install.sh ~/KlipperScreen
 sudo systemctl restart KlipperScreen
-```
+~~~
 
-If KlipperScreen is installed elsewhere, pass its actual directory instead of `~/KlipperScreen`.
-
-The installer backs up the current `panels/main_menu.py` and `styles/base.css` in a timestamped folder inside the KlipperScreen directory before replacing/appending anything.
+If KlipperScreen runs under a different Linux user than the one running the installer, run the installer as the KlipperScreen service user so the GTK icon theme is installed in the correct home directory. If KlipperScreen is installed elsewhere, pass its actual directory instead of ~/KlipperScreen.
 
 ## Roll back
 
-```bash
-cd voron-klipperscreen-neon-dashboard
+~~~bash
+cd ~/voron-klipperscreen-neon-dashboard
 bash uninstall.sh ~/KlipperScreen
-sudo systemctl restart KlipperScreen
-```
+~~~
 
-The rollback script uses the backup path saved by the installer. If you have multiple backups, inspect `~/KlipperScreen/.voron-dashboard-backup-path` before rolling back.
-
-## Custom panel shortcuts
-
-The left navigation includes Bed Mesh, PA Fine and Spoolman shortcuts. The PA Fine and Spoolman panel IDs are installation-specific; edit the list in `panels/voron_dashboard.py` to match the panel IDs used by your KlipperScreen configuration.
+The rollback script restores the KlipperScreen panel and stylesheet backup. To restore the previous GTK icon theme, edit ~/.config/gtk-3.0/settings.ini and restore its previous gtk-icon-theme-name value (or remove that key if it was not previously present), then restart KlipperScreen.
 
 ## Important notes
 
-- This project does not modify `printer.cfg`, Moonraker configuration, macros, or MCU firmware.
+- This project does not modify printer.cfg, Moonraker configuration, macros, or MCU firmware.
 - The dashboard is not a pixel-perfect port of the supplied 1650×930 concept image; it rearranges the same information for an 800×480 display.
 - Verify pause, resume, and stop behavior before starting a long print.
+- The SVG icon theme has been added to the repository, but a real Pi/GTK runtime screenshot is still required to verify every native KlipperScreen panel.
 - If KlipperScreen fails to start, restore the backup as described above and inspect the service journal.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See LICENSE.
