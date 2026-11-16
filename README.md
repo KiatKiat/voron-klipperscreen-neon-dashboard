@@ -38,7 +38,20 @@ See [the implementation specification](docs/800x480-implementation-spec.md) for 
 3. Run the installer with the path to your KlipperScreen source directory:
 
 ```bash
+cd ~
+git clone --branch neon-all-pages-refresh https://github.com/KiatKiat/voron-klipperscreen-neon-dashboard.git
 cd voron-klipperscreen-neon-dashboard
+bash install.sh ~/KlipperScreen
+sudo systemctl restart KlipperScreen
+```
+
+If the repository is already cloned, update it first:
+
+```bash
+cd ~/voron-klipperscreen-neon-dashboard
+git fetch origin
+git checkout neon-all-pages-refresh
+git pull --ff-only
 bash install.sh ~/KlipperScreen
 sudo systemctl restart KlipperScreen
 ```
