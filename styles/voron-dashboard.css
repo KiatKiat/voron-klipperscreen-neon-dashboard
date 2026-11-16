@@ -261,3 +261,117 @@ button:hover image, button:focus image, button:checked image {
   -gtk-icon-shadow: 0 0 7px alpha(#00d9ff, 0.8);
 }
 button:disabled image { color: #66839b; -gtk-icon-shadow: none; }
+
+
+/* ================================================================
+   NEON VORON — native KlipperScreen page refresh
+   Shared visual language for files, print, temperature, move, fans,
+   mesh, macros, console, settings and information panels.
+   Native GTK widgets and KlipperScreen callbacks remain untouched.
+   ================================================================ */
+.view, .view text, treeview.view, treeview.view text {
+  background-color: #030d19;
+  color: #eff9ff;
+}
+list, listview, list row, row {
+  background-color: #061526;
+  color: #eff9ff;
+}
+list row, row {
+  border: 1px solid #103c5a;
+  border-radius: 7px;
+  margin: 2px 1px;
+  padding: 3px 5px;
+}
+list row:selected, row:selected, treeview.view:selected {
+  background-image: linear-gradient(to right, #075b8c, #102d59);
+  background-color: #075b8c;
+  color: #ffffff;
+  border: 1px solid #00d9ff;
+}
+list row:hover, row:hover {
+  background-color: #0b2942;
+  border-color: #168bc0;
+}
+notebook, notebook > header {
+  background-color: #030b16;
+  border-color: #12618d;
+}
+notebook > header > tabs > tab {
+  background-color: #071626;
+  color: #8fc9eb;
+  border: 1px solid #12466a;
+  border-radius: 7px 7px 0 0;
+  padding: 5px 9px;
+}
+notebook > header > tabs > tab:checked {
+  background-image: linear-gradient(to bottom, #075b8c, #08213a);
+  color: #ffffff;
+  border-color: #00d9ff;
+}
+tooltip {
+  background-color: #071626;
+  color: #eff9ff;
+  border: 1px solid #00d9ff;
+  border-radius: 6px;
+}
+popover, menu, .menu {
+  background-color: #071626;
+  color: #eff9ff;
+  border: 1px solid #087eae;
+  border-radius: 8px;
+}
+menuitem {
+  padding: 6px 10px;
+}
+menuitem:hover {
+  background-color: #075b8c;
+  color: #ffffff;
+}
+progressbar trough {
+  background-color: #10283e;
+  border: 1px solid #14618e;
+  border-radius: 8px;
+  min-height: 10px;
+}
+progressbar progress {
+  background-image: linear-gradient(to right, #00b8ff, #00f0e0);
+  background-color: #00cfff;
+  border-radius: 8px;
+}
+scale marks mark label {
+  color: #8fc9eb;
+  font-size: 10px;
+}
+spinbutton button {
+  min-width: 36px;
+  min-height: 36px;
+}
+textview, textview text {
+  background-color: #020a13;
+  color: #65ff9e;
+  caret-color: #00e5ff;
+  font-family: "DejaVu Sans Mono", monospace;
+  font-size: 12px;
+}
+textview border {
+  border: 1px solid #14618e;
+  border-radius: 7px;
+}
+.dialog button, dialog button, message-dialog button {
+  min-height: 42px;
+  min-width: 64px;
+}
+image {
+  -gtk-icon-shadow: 0 0 4px alpha(#00d9ff, 0.45);
+}
+button.suggested-action, button.default {
+  background-image: linear-gradient(to bottom, #0878db, #073d83);
+  border: 1px solid #00d9ff;
+  color: #ffffff;
+}
+button.destructive-action {
+  background-image: linear-gradient(to bottom, #d51a43, #760b25);
+  border: 1px solid #ff3157;
+  color: #ffffff;
+}
