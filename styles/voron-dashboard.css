@@ -1,18 +1,263 @@
-/* Voron neon dashboard theme */
-.vd-root { background: #030a14; color: #eaf5ff; padding: 3px; }
-.vd-top { background: #071321; border-bottom: 2px solid #00d9ff; padding: 3px 5px; }
-.vd-brand { color: #ff203d; font-size: 22px; font-weight: 900; }
-.vd-top-sub { color: #b8d9f8; font-size: 15px; font-weight: 700; }
-.vd-state { color: #00ff86; background: #07321e; border: 1px solid #00e878; border-radius: 18px; padding: 3px 12px; font-size: 13px; font-weight: 900; }
-.vd-card { background: #0a1728; border: 1px solid #087eb9; border-radius: 12px; padding: 5px; }
-.vd-card-title { color: #9bcaf2; font-size: 11px; font-weight: 800; }
-.vd-card-value { color: #00d9ff; font-size: 22px; font-weight: 900; }
-.vd-card-sub { color: #b8d9f8; font-size: 10px; }
-.vd-file { color: #f5faff; font-size: 17px; font-weight: 800; }
-.vd-progress { color: #ffffff; font-size: 42px; font-weight: 900; }
-.vd-nav { background: #0a1a2d; color: #bfe3ff; border: 1px solid #087eb9; border-radius: 9px; font-size: 11px; font-weight: 800; padding: 4px 2px; }
-.vd-nav:active, .vd-nav:hover { background: #0755a8; color: #ffffff; border: 1px solid #00d9ff; }
-.vd-action { color: #ffffff; border-radius: 10px; font-size: 14px; font-weight: 900; padding: 5px; }
-.vd-blue { background: #064dbd; border: 1px solid #00aaff; }
-.vd-red { background: #c80020; border: 1px solid #ff3755; }
-.vd-blue:active, .vd-red:active { background: #087dcc; }
+/* NEON_VORON_THEME_BEGIN */
+/* Neon GTK3 skin for KlipperScreen — tuned for 800x480 HDMI landscape.
+ * Styling only: native KlipperScreen panels keep their original callbacks/actions.
+ */
+@define-color color1 #ffad19;
+@define-color color2 #ed35d2;
+@define-color color3 #00d9ff;
+@define-color color4 #8b70ff;
+@define-color bg #020711;
+@define-color active #073e68;
+@define-color echo #064b35;
+@define-color warning #9a5b00;
+@define-color error #a40d2b;
+@define-color text #eff9ff;
+@define-color text-inv #020711;
+@define-color lines #087eae;
+@define-color switch-scale-bg #00cfff;
+
+* {
+  color: @text;
+  text-shadow: none;
+  -gtk-icon-shadow: none;
+  font-family: "DejaVu Sans", sans-serif;
+}
+window, window.background, #main, list, list row, treeview.view, junction {
+  background-color: @bg;
+  color: @text;
+}
+.title_bar, .titlebar, headerbar {
+  background-image: linear-gradient(to bottom, #0b1c32, #030a14);
+  color: #f5fbff;
+  border-bottom: 2px solid #00cfff;
+}
+label { color: @text; }
+label:disabled { color: #66839b; }
+button {
+  background-image: linear-gradient(to bottom, #102c49, #061426);
+  background-color: #081a2c;
+  color: #f4fbff;
+  border: 1px solid #14618e;
+  border-radius: 9px;
+  margin: 2px;
+  padding: 5px 7px;
+  min-height: 30px;
+  font-weight: bold;
+}
+button:hover, button:focus {
+  background-image: linear-gradient(to bottom, #14517c, #09213a);
+  border: 1px solid #00dfff;
+  color: #ffffff;
+}
+button:active, button:checked, button.active, .button_active {
+  background-image: linear-gradient(to bottom, #087bb5, #06406d);
+  border: 1px solid #42eaff;
+  color: #ffffff;
+}
+button:disabled { opacity: .42; }
+button.color1 { border-bottom: 3px solid #ffad19; }
+button.color2 { border-bottom: 3px solid #ed35d2; }
+button.color3 { border-bottom: 3px solid #00d9ff; }
+button.color4 { border-bottom: 3px solid #8b70ff; }
+entry, entry text, textview, textview text, combobox button, spinbutton {
+  background-color: #030e1b;
+  color: #eaf8ff;
+  border: 1px solid #14709c;
+  border-radius: 7px;
+  caret-color: #00e5ff;
+  padding: 5px;
+}
+entry:focus, textview:focus, spinbutton:focus {
+  border: 2px solid #00dfff;
+}
+trough {
+  background-color: #10283e;
+  border: 1px solid #174d70;
+  border-radius: 7px;
+  min-height: 8px;
+}
+trough highlight, trough progress {
+  background-image: linear-gradient(to right, #00b8ff, #00f0e0);
+  background-color: #00cfff;
+  border-radius: 7px;
+}
+scale trough { min-height: 9px; }
+scale trough slider {
+  background-image: linear-gradient(to bottom, #ffffff, #b6eaff);
+  background-color: #eafaff;
+  border: 2px solid #00dfff;
+  border-radius: 50%;
+  min-width: 18px;
+  min-height: 18px;
+}
+switch { background-color: #24384b; border: 1px solid #50728a; border-radius: 14px; }
+switch:checked { background-color: #087c69; border-color: #00e59a; }
+switch slider { background-color: #effaff; border-radius: 50%; }
+separator { background-color: #12618d; min-height: 1px; min-width: 1px; }
+.frame-item {
+  background-color: #071626;
+  border: 1px solid #103c5a;
+  border-radius: 7px;
+  padding: 4px;
+}
+.title_bar { padding: 2px 4px; }
+.content { background-color: #020812; }
+.printing-info, .printing-info-secondary {
+  background-color: #061626;
+  border: 1px solid #12618d;
+  border-radius: 8px;
+}
+.printing-progress-text, .printing-filename { color: #00e0ff; font-weight: bold; }
+.printing-status-label { color: #62ffad; font-weight: bold; }
+.graph_label { color: #aeeaff; border-left-color: #00d9ff; }
+scrollbar, scrollbar button, scrollbar trough { background-color: #041321; }
+scrollbar slider { background-color: #12618d; border: 1px solid #00bfe8; border-radius: 7px; min-width: 8px; min-height: 8px; }
+.dialog, dialog, .message {
+  background-color: #071626;
+  color: #f2faff;
+  border: 1px solid #00cfff;
+  border-radius: 10px;
+}
+.dialog button, dialog button { min-height: 38px; }
+
+/* Custom dashboard building blocks */
+.nv-root { background-color: #020711; color: #eff9ff; padding: 2px; }
+.nv-header {
+  background-image: linear-gradient(to bottom, #0b1c32, #030a14);
+  border-bottom: 2px solid #00cfff;
+  padding: 3px 6px;
+}
+.nv-brand { color: #ff294f; font-size: 23px; font-weight: 900; }
+.nv-header-sub { color: #b6dfff; font-size: 15px; font-weight: 800; }
+.nv-clock { color: #e5f5ff; font-size: 12px; font-weight: 800; }
+.nv-state {
+  color: #6affad; background-color: #073323;
+  border: 1px solid #00d58a; border-radius: 16px;
+  padding: 3px 8px; font-size: 11px; font-weight: 900;
+}
+.nv-card {
+  background-image: linear-gradient(to bottom, #0a2036, #050f1d);
+  background-color: #071626;
+  border: 1px solid #087eae;
+  border-radius: 10px;
+  padding: 5px;
+}
+.nv-standard { padding: 5px; }
+.nv-compact { padding: 3px; }
+.nv-caption { color: #8fc9eb; font-size: 9px; font-weight: 900; }
+.nv-number { color: #00d9ff; font-size: 20px; font-weight: 900; }
+.nv-small-number { color: #f0f9ff; font-size: 15px; font-weight: 900; }
+.nv-sub { color: #b3d6ee; font-size: 9px; font-weight: 700; }
+.nv-filename { color: #f4fbff; font-size: 14px; font-weight: 900; }
+.nv-progress-sub { color: #9bdcff; font-size: 11px; font-weight: 800; }
+.nv-time { color: #f4fbff; font-size: 13px; font-weight: 900; }
+.nv-nav {
+  background-image: linear-gradient(to bottom, #102d4b, #061426);
+  color: #d6efff; border: 1px solid #12618d;
+  border-radius: 8px; font-size: 10px; font-weight: 900;
+  padding: 3px 1px; min-height: 30px;
+}
+.nv-nav:hover, .nv-nav:active {
+  background-image: linear-gradient(to bottom, #087bb5, #06406d);
+  color: #fff; border-color: #00d9ff;
+}
+.nv-action {
+  color: #fff; border-radius: 9px;
+  font-size: 13px; font-weight: 900; padding: 4px;
+  min-height: 36px;
+}
+.nv-blue { background-image: linear-gradient(to bottom, #0878db, #073d83); border: 1px solid #00cfff; }
+.nv-red { background-image: linear-gradient(to bottom, #d51a43, #760b25); border: 1px solid #ff365c; }
+.nv-green { background-image: linear-gradient(to bottom, #08a86c, #075b43); border: 1px solid #00efa1; }
+.nv-amber { background-image: linear-gradient(to bottom, #d98b08, #754300); border: 1px solid #ffc247; }
+.nv-magenta { background-image: linear-gradient(to bottom, #b51ca7, #5a145c); border: 1px solid #f04be2; }
+.nv-blue:active, .nv-red:active, .nv-green:active, .nv-amber:active, .nv-magenta:active {
+  background-image: none; background-color: #0878bd;
+}
+/* NEON_VORON_THEME_END */
+
+
+/* 800x480 page-wide sizing and typography contract */
+.title_bar, .titlebar, headerbar {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+.title_bar label, .titlebar label, headerbar label {
+  font-size: 16px;
+  font-weight: 800;
+}
+.content {
+  padding: 5px;
+}
+button {
+  font-size: 13px;
+  font-weight: 800;
+  min-height: 38px;
+}
+label {
+  font-size: 12px;
+}
+entry, spinbutton, combobox button {
+  min-height: 34px;
+  font-size: 13px;
+}
+.nv-brand { font-size: 20px; }
+.nv-header-sub { font-size: 13px; }
+.nv-clock { font-size: 11px; }
+.nv-caption { font-size: 10px; }
+.nv-number { font-size: 22px; }
+.nv-small-number { font-size: 14px; }
+.nv-sub { font-size: 10px; }
+.nv-filename { font-size: 13px; }
+.nv-progress-sub { font-size: 11px; }
+.nv-time { font-size: 12px; }
+.nv-nav { font-size: 10px; min-height: 38px; }
+.nv-action { font-size: 13px; min-height: 42px; }
+
+
+/* Consistent symbolic icon system matched to the Neon Voron mockup */
+.nv-icon {
+  -gtk-icon-shadow: 0 0 5px alpha(#00d9ff, 0.55);
+  color: #00d9ff;
+}
+.nv-icon-nozzle { color: #ffad19; -gtk-icon-shadow: 0 0 6px alpha(#ffad19, 0.7); }
+.nv-icon-bed { color: #00d9ff; }
+.nv-icon-chamber { color: #d783ff; -gtk-icon-shadow: 0 0 6px alpha(#d783ff, 0.65); }
+.nv-icon-fan, .nv-icon-partfan { color: #00d9ff; }
+.nv-icon-speed { color: #36ff8c; -gtk-icon-shadow: 0 0 5px alpha(#36ff8c, 0.55); }
+.nv-icon-flow { color: #ed35d2; }
+.nv-icon-filament { color: #00d9ff; }
+.nv-icon-mcu, .nv-icon-cpu { color: #36ff8c; }
+.nv-nav {
+  min-height: 40px;
+  padding: 2px 1px;
+}
+.nv-nav image { -gtk-icon-size: 20px; }
+.nv-nav-label {
+  color: #d9f2ff;
+  font-size: 9px;
+  font-weight: 900;
+}
+.nv-button-label {
+  color: #f4fbff;
+  font-size: 12px;
+  font-weight: 900;
+}
+.nv-action image {
+  -gtk-icon-size: 20px;
+  color: #ffffff;
+}
+.nv-action.nv-red image { color: #ffffff; }
+.nv-card .nv-caption { font-size: 9px; }
+
+/* Native KlipperScreen pages: keep the complete GTK icon system consistent */
+image {
+  color: #00d9ff;
+  -gtk-icon-shadow: 0 0 4px alpha(#00d9ff, 0.45);
+}
+button image { color: #8feaff; }
+button:hover image, button:focus image, button:checked image {
+  color: #ffffff;
+  -gtk-icon-shadow: 0 0 7px alpha(#00d9ff, 0.8);
+}
+button:disabled image { color: #66839b; -gtk-icon-shadow: none; }
