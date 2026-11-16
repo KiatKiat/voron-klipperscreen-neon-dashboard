@@ -21,8 +21,9 @@ fi
 install -m 0644 "$SCRIPT_DIR/panels/voron_dashboard.py" "$KS_DIR/panels/voron_dashboard.py"
 install -m 0644 "$SCRIPT_DIR/main_menu.py" "$KS_DIR/panels/main_menu.py"
 cat "$SCRIPT_DIR/styles/voron-dashboard.css" >> "$KS_DIR/styles/base.css"
+bash "$SCRIPT_DIR/install-icons.sh"
 printf '%s\n' "$BACKUP" > "$KS_DIR/.voron-dashboard-backup-path"
 
-echo "Dashboard files installed."
+echo "Dashboard and Neon-Voron icon theme installed."
 echo "Backup saved to: $BACKUP"
 echo "Restart KlipperScreen: sudo systemctl restart KlipperScreen"
