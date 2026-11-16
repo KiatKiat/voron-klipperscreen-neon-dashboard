@@ -7,6 +7,8 @@ A touch-friendly neon dashboard concept for KlipperScreen, designed around a Vor
 ## Features
 
 - Dark navy interface with cyan / blue neon styling
+- Consistent symbolic GTK icons for navigation, temperature cards, telemetry and print actions
+- Semantic icon accents: amber nozzle, cyan bed/fans, purple chamber, green system health, magenta flow
 - Print filename, progress percentage, layer information and elapsed time
 - Nozzle, bed and chamber temperature cards
 - Fan, speed, flow and filament-use indicators
@@ -22,6 +24,12 @@ A touch-friendly neon dashboard concept for KlipperScreen, designed around a Vor
 - Printer telemetry is read from KlipperScreen's printer status object
 
 Some fields depend on your printer configuration. Chamber and MCU temperatures require matching temperature sensor names. CPU load is not yet integrated and is shown as a placeholder.
+
+## 800×480 layout and icon system
+
+The dashboard uses a compact 800×480 landscape layout, GTK symbolic icons (no emoji dependency), and semantic neon accents. The custom Home dashboard is updated; other KlipperScreen pages retain their native controls and receive the shared GTK icon styling from the appended theme.
+
+See [the implementation specification](docs/800x480-implementation-spec.md) for page inventory, sizing, icon mapping and verification requirements.
 
 ## Install
 
